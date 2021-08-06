@@ -1,0 +1,10 @@
+E:\2021 Full-stack\C#과제\SockSockGame\bin\Debug\SockSockGame.exe.config
+E:\2021 Full-stack\C#과제\SockSockGame\bin\Debug\SockSockGame.exe
+E:\2021 Full-stack\C#과제\SockSockGame\bin\Debug\SockSockGame.pdb
+E:\2021 Full-stack\C#과제\SockSockGame\obj\Debug\SockSockGame.csproj.AssemblyReference.cache
+E:\2021 Full-stack\C#과제\SockSockGame\obj\Debug\SockSockGame.Form1.resources
+E:\2021 Full-stack\C#과제\SockSockGame\obj\Debug\SockSockGame.Properties.Resources.resources
+E:\2021 Full-stack\C#과제\SockSockGame\obj\Debug\SockSockGame.csproj.GenerateResource.cache
+E:\2021 Full-stack\C#과제\SockSockGame\obj\Debug\SockSockGame.csproj.CoreCompileInputs.cache
+E:\2021 Full-stack\C#과제\SockSockGame\obj\Debug\SockSockGame.exe
+E:\2021 Full-stack\C#과제\SockSockGame\obj\Debug\SockSockGame.pdb
