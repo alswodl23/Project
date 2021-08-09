@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -100,6 +101,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\Duduge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\Night.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MP_Swing.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sound\MP_Swing.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MP_Swing.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MP_Vast Chant.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MP_タイマン _ Duel-Funk&amp;Rock.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MP_Colours.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MP_Dusk.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MP_Halcyon.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,6 +38,10 @@ namespace SockSockGame
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlNavi = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.btnEnd = new System.Windows.Forms.Button();
+            this.btnRecord = new System.Windows.Forms.Button();
+            this.btnReStart = new System.Windows.Forms.Button();
             this.ptbSoundUp = new System.Windows.Forms.PictureBox();
             this.ptbSoundDown = new System.Windows.Forms.PictureBox();
             this.ptbSound = new System.Windows.Forms.PictureBox();
@@ -49,16 +53,12 @@ namespace SockSockGame
             this.ptbHeart3 = new System.Windows.Forms.PictureBox();
             this.ptbHeart2 = new System.Windows.Forms.PictureBox();
             this.ptbHeart1 = new System.Windows.Forms.PictureBox();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnHowToPlay = new System.Windows.Forms.Button();
-            this.btnID = new System.Windows.Forms.TextBox();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.btnReStart = new System.Windows.Forms.Button();
-            this.btnRecord = new System.Windows.Forms.Button();
-            this.btnEnd = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
             this.lblTimerCount = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.btnHowToPlay = new System.Windows.Forms.Button();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.btnStart = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.pnlNavi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSoundUp)).BeginInit();
@@ -91,9 +91,9 @@ namespace SockSockGame
             this.lblScore.ForeColor = System.Drawing.Color.White;
             this.lblScore.Location = new System.Drawing.Point(158, 105);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(48, 27);
+            this.lblScore.Size = new System.Drawing.Size(24, 27);
             this.lblScore.TabIndex = 4;
-            this.lblScore.Text = "100";
+            this.lblScore.Text = "0";
             // 
             // groupBox1
             // 
@@ -185,8 +185,49 @@ namespace SockSockGame
             this.pnlNavi.Controls.Add(this.label1);
             this.pnlNavi.Location = new System.Drawing.Point(-1, -1);
             this.pnlNavi.Name = "pnlNavi";
-            this.pnlNavi.Size = new System.Drawing.Size(279, 763);
+            this.pnlNavi.Size = new System.Drawing.Size(277, 763);
             this.pnlNavi.TabIndex = 3;
+            // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnHome.Location = new System.Drawing.Point(63, 281);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(150, 40);
+            this.btnHome.TabIndex = 28;
+            this.btnHome.Text = "처음으로";
+            this.btnHome.UseVisualStyleBackColor = true;
+            // 
+            // btnEnd
+            // 
+            this.btnEnd.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnEnd.Location = new System.Drawing.Point(63, 467);
+            this.btnEnd.Name = "btnEnd";
+            this.btnEnd.Size = new System.Drawing.Size(150, 40);
+            this.btnEnd.TabIndex = 27;
+            this.btnEnd.Text = "끝내기";
+            this.btnEnd.UseVisualStyleBackColor = true;
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
+            // 
+            // btnRecord
+            // 
+            this.btnRecord.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnRecord.Location = new System.Drawing.Point(63, 405);
+            this.btnRecord.Name = "btnRecord";
+            this.btnRecord.Size = new System.Drawing.Size(150, 40);
+            this.btnRecord.TabIndex = 26;
+            this.btnRecord.Text = "랭킹";
+            this.btnRecord.UseVisualStyleBackColor = true;
+            // 
+            // btnReStart
+            // 
+            this.btnReStart.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnReStart.Location = new System.Drawing.Point(63, 343);
+            this.btnReStart.Name = "btnReStart";
+            this.btnReStart.Size = new System.Drawing.Size(150, 40);
+            this.btnReStart.TabIndex = 25;
+            this.btnReStart.Text = "다시시작";
+            this.btnReStart.UseVisualStyleBackColor = true;
             // 
             // ptbSoundUp
             // 
@@ -221,6 +262,7 @@ namespace SockSockGame
             this.ptbSound.Size = new System.Drawing.Size(42, 34);
             this.ptbSound.TabIndex = 21;
             this.ptbSound.TabStop = false;
+            this.ptbSound.Click += new System.EventHandler(this.ptbSound_Click);
             // 
             // pnlMain
             // 
@@ -232,9 +274,9 @@ namespace SockSockGame
             this.pnlMain.Controls.Add(this.ptbHeart1);
             this.pnlMain.Controls.Add(this.lblTimerCount);
             this.pnlMain.Controls.Add(this.btnNext);
-            this.pnlMain.Controls.Add(this.label10);
+            this.pnlMain.Controls.Add(this.lblTimer);
             this.pnlMain.Controls.Add(this.btnHowToPlay);
-            this.pnlMain.Controls.Add(this.btnID);
+            this.pnlMain.Controls.Add(this.txtID);
             this.pnlMain.Controls.Add(this.btnStart);
             this.pnlMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pnlMain.Location = new System.Drawing.Point(276, -1);
@@ -262,6 +304,7 @@ namespace SockSockGame
             this.btnHowToOk.TabIndex = 21;
             this.btnHowToOk.Text = "OK";
             this.btnHowToOk.UseVisualStyleBackColor = true;
+            this.btnHowToOk.Click += new System.EventHandler(this.btnHowToOk_Click);
             // 
             // textBox3
             // 
@@ -299,6 +342,7 @@ namespace SockSockGame
             this.ptbHeart3.Size = new System.Drawing.Size(42, 34);
             this.ptbHeart3.TabIndex = 19;
             this.ptbHeart3.TabStop = false;
+            this.ptbHeart3.Visible = false;
             // 
             // ptbHeart2
             // 
@@ -310,17 +354,32 @@ namespace SockSockGame
             this.ptbHeart2.Size = new System.Drawing.Size(42, 34);
             this.ptbHeart2.TabIndex = 18;
             this.ptbHeart2.TabStop = false;
+            this.ptbHeart2.Visible = false;
             // 
             // ptbHeart1
             // 
             this.ptbHeart1.BackColor = System.Drawing.Color.Transparent;
             this.ptbHeart1.BackgroundImage = global::SockSockGame.Properties.Resources.hart;
             this.ptbHeart1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ptbHeart1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.ptbHeart1.Location = new System.Drawing.Point(401, 12);
             this.ptbHeart1.Name = "ptbHeart1";
             this.ptbHeart1.Size = new System.Drawing.Size(42, 34);
             this.ptbHeart1.TabIndex = 17;
             this.ptbHeart1.TabStop = false;
+            this.ptbHeart1.UseWaitCursor = true;
+            this.ptbHeart1.Visible = false;
+            // 
+            // lblTimerCount
+            // 
+            this.lblTimerCount.AutoSize = true;
+            this.lblTimerCount.Font = new System.Drawing.Font("한컴 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTimerCount.Location = new System.Drawing.Point(106, 13);
+            this.lblTimerCount.Name = "lblTimerCount";
+            this.lblTimerCount.Size = new System.Drawing.Size(19, 21);
+            this.lblTimerCount.TabIndex = 12;
+            this.lblTimerCount.Text = "0";
+            this.lblTimerCount.Visible = false;
             // 
             // btnNext
             // 
@@ -331,16 +390,18 @@ namespace SockSockGame
             this.btnNext.TabIndex = 16;
             this.btnNext.Text = "넘어가기";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Visible = false;
             // 
-            // label10
+            // lblTimer
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("한컴 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(15, 13);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 21);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "타이머 : ";
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("한컴 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTimer.Location = new System.Drawing.Point(15, 13);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(68, 21);
+            this.lblTimer.TabIndex = 11;
+            this.lblTimer.Text = "타이머 : ";
+            this.lblTimer.Visible = false;
             // 
             // btnHowToPlay
             // 
@@ -356,16 +417,18 @@ namespace SockSockGame
             this.btnHowToPlay.TabIndex = 15;
             this.btnHowToPlay.Text = "How To Play?";
             this.btnHowToPlay.UseVisualStyleBackColor = false;
+            this.btnHowToPlay.Click += new System.EventHandler(this.btnHowToPlay_Click);
             // 
-            // btnID
+            // txtID
             // 
-            this.btnID.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnID.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.btnID.Location = new System.Drawing.Point(373, 250);
-            this.btnID.Name = "btnID";
-            this.btnID.Size = new System.Drawing.Size(220, 32);
-            this.btnID.TabIndex = 13;
-            this.btnID.Text = "이름을 입력해주세요";
+            this.txtID.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtID.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.txtID.Location = new System.Drawing.Point(373, 250);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(220, 32);
+            this.txtID.TabIndex = 13;
+            this.txtID.Text = "이름을 입력해주세요";
+            this.txtID.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtID_MouseClick);
             // 
             // btnStart
             // 
@@ -381,57 +444,7 @@ namespace SockSockGame
             this.btnStart.TabIndex = 12;
             this.btnStart.Text = "S T A R T !";
             this.btnStart.UseVisualStyleBackColor = false;
-            // 
-            // btnReStart
-            // 
-            this.btnReStart.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnReStart.Location = new System.Drawing.Point(63, 343);
-            this.btnReStart.Name = "btnReStart";
-            this.btnReStart.Size = new System.Drawing.Size(150, 40);
-            this.btnReStart.TabIndex = 25;
-            this.btnReStart.Text = "다시시작";
-            this.btnReStart.UseVisualStyleBackColor = true;
-            // 
-            // btnRecord
-            // 
-            this.btnRecord.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnRecord.Location = new System.Drawing.Point(63, 405);
-            this.btnRecord.Name = "btnRecord";
-            this.btnRecord.Size = new System.Drawing.Size(150, 40);
-            this.btnRecord.TabIndex = 26;
-            this.btnRecord.Text = "랭킹";
-            this.btnRecord.UseVisualStyleBackColor = true;
-            // 
-            // btnEnd
-            // 
-            this.btnEnd.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnEnd.Location = new System.Drawing.Point(63, 467);
-            this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(150, 40);
-            this.btnEnd.TabIndex = 27;
-            this.btnEnd.Text = "끝내기";
-            this.btnEnd.UseVisualStyleBackColor = true;
-            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
-            // 
-            // btnHome
-            // 
-            this.btnHome.Font = new System.Drawing.Font("한컴 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnHome.Location = new System.Drawing.Point(63, 281);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(150, 40);
-            this.btnHome.TabIndex = 28;
-            this.btnHome.Text = "처음으로";
-            this.btnHome.UseVisualStyleBackColor = true;
-            // 
-            // lblTimerCount
-            // 
-            this.lblTimerCount.AutoSize = true;
-            this.lblTimerCount.Font = new System.Drawing.Font("한컴 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTimerCount.Location = new System.Drawing.Point(106, 13);
-            this.lblTimerCount.Name = "lblTimerCount";
-            this.lblTimerCount.Size = new System.Drawing.Size(19, 21);
-            this.lblTimerCount.TabIndex = 12;
-            this.lblTimerCount.Text = "0";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // Form1
             // 
@@ -444,6 +457,7 @@ namespace SockSockGame
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.pnlNavi.ResumeLayout(false);
@@ -471,7 +485,7 @@ namespace SockSockGame
         private System.Windows.Forms.TextBox txtCopyright;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTimer;
         private System.Windows.Forms.PictureBox ptbSoundUp;
         private System.Windows.Forms.PictureBox ptbSoundDown;
         private System.Windows.Forms.PictureBox ptbSound;
@@ -486,7 +500,7 @@ namespace SockSockGame
         private System.Windows.Forms.Button btnHowToOk;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox btnID;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Panel pnlNavi;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Button btnHome;
