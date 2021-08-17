@@ -15,21 +15,56 @@ namespace SockSockGame
 {
     public partial class Form1 : Form
     {
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void pnlNavi_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        private void pnlMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
         //랜덤카테고리
         Random rand = new Random();
 
-        //이미지박스 카테고리(주로 미니게임내에 사용되는 객체들에 이용)
-        PictureBox Image1 = new PictureBox();
-
         //게임 클리어 조건구역
+        int hartCount = 3;
         int clear = 0;
-
-        //Thread 구역
-        Thread thr1;
 
         //사운드
         System.Media.SoundPlayer soundPlayer;
         bool soundCheck = false;
+
+        //넘어가기 기능 카운트
+        int skipGame = 2;
+
+        //ID 닉네임 저장
+        string id = null;
+
+        //타이머
+        int counter = 0;
+
+        //스레드
+        public Thread thr;
+
+        //게임오버
+        GameOver go;
 
         public Form1()
         {
@@ -38,13 +73,11 @@ namespace SockSockGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //미니게임에 사용되는 이미지들은 미리미리 패널에 등록해놔야 오류가 안생김.
-            pnlMain.Controls.Add(Image1);
             initplay();
             Sound();
         }
 
-        private void Visible_Game_Start()
+        internal void Visible_Game_Start()
         {
             lblTimer.Visible = true;
             lblTimerCount.Visible = true;
@@ -58,7 +91,7 @@ namespace SockSockGame
             pnlHowToPlay.Visible = false;
         }
 
-        private void Visible_Game_Stop()
+        internal void Visible_Game_Stop()
         {
             lblTimer.Visible = false;
             lblTimerCount.Visible = false;
@@ -71,28 +104,18 @@ namespace SockSockGame
             btnHowToPlay.Visible = true;
         }
 
-        private void initplay()
+        internal void initplay()
         {
             Visible_Game_Stop();
             pnlMain.BackgroundImage = Properties.Resources.Main_BG1;//배경화면
         }
 
-        private void BG_Main()
-        {
-            pnlMain.BackgroundImage = Properties.Resources.Main_BG1;//배경화면
-        }
-
-        private void BG1()
-        {
-            pnlMain.BackgroundImage = Properties.Resources.Night;//배경화면
-        }
 
         private void Sound()
         {
             soundCheck = true;
             int soundRand = rand.Next(0, 5);
 
-            
             switch (soundRand)
             {
                 case 0:
@@ -130,90 +153,40 @@ namespace SockSockGame
         }
 
 
-        private void stop()
+        private void Start_Game()
         {
-            BG_Main();
-            Visible_Game_Stop();
-        }
-
-        private void play()
-        {
-            clear = 2;
-            int object_x = rand.Next(55, 900);
-            int object_y = rand.Next(160, 580);
-
-            Image1.Click += Image_Click;
-
-            while (true)
+            counter = 60;
+            timer.Enabled = true;
+            int i = rand.Next(0, 6);
+            switch (4)
             {
-                if (clear <= 0)
-                {
+                case 1:
+                    GameC001 C001 = new GameC001();
+                    C001.Play();
                     break;
-                }
-                else if(clear > 0)
-                {
-                    Thread.Sleep(2000);
-                    object_x = rand.Next(55, 900);
-                    object_y = rand.Next(160, 580);
-
-                    this.Invoke(new Action(delegate ()
-                    {
-                        Image1.Location = new Point(object_x, object_y);
-                    }));
-                }
-
+                case 2:
+                    GameC002 C002 = new GameC002();
+                    C002.InitGame();
+                    break;
+                case 3:
+                    GameL001 L001 = new GameL001();
+                    L001.Game_L001();
+                    break;
+                case 4:
+                    GameL002 L002 = new GameL002();
+                    L002.Game_L002();
+                    break;
+                case 5:
+                    GameL003 C003 = new GameL003();
+                    C003.initGameL003();
+                    break;
             }
-
-            //종료구간
-
-            this.Invoke(new Action(delegate ()
-            {
-                Image1.Visible = false;
-                stop();
-            }));
         }
-
-        private void first_Game()
-        {
-            
-            thr1 = new Thread(new ThreadStart(play));
-
-            BG1();
-            Visible_Game_Start();
-
-            Image1.Visible = true;
-            Image1.Location = new System.Drawing.Point(522, 100);
-            Image1.Size = new System.Drawing.Size(180, 100);
-            //Image1.Width = 180; //위의 Image1 Size 적용하는 다른 방법
-            //Image1.Height = 180;
-            Image1.BackColor = System.Drawing.Color.Transparent;
-            Image1.Image = Properties.Resources.Duduge;
-            Image1.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            thr1.Start();
-        }
-
-        ///////////////////////////Form1.cs에서 임의로 추가한 이벤트
-
-        private void Image_Click(object sender, EventArgs e)
-        {
-            int object_x = 0;
-            int object_y = 0;
-
-            object_x = rand.Next(55, 900);
-            object_y = rand.Next(160, 580);
-
-            Image1.Location = new Point(object_x, object_y);
-
-            clear--;
-        }
-
 
         ///////////////////////////Form1.cs[디자인]에서 추가한 이벤트
 
         private void btnEnd_Click(object sender, EventArgs e)
         {
-            thr1.Abort();
             Application.Exit();
         }
 
@@ -229,8 +202,9 @@ namespace SockSockGame
             }
             else
             {
+                id = txtID.Text;
                 MessageBox.Show("게임을 시작합니다. 준비 되셨죠?");
-                first_Game();
+                Start_Game();
             }
         }
 
@@ -260,6 +234,54 @@ namespace SockSockGame
             {
                 Sound();
             }
+        }
+
+        public void btnHome_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+            this.Controls.Clear();
+            this.InitializeComponent();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            skipGame--;
+            if (skipGame == 0)
+            {
+                btnNext.Enabled = false;
+                //레이블로 넘어가기 소진여부 알려주면 좋을듯?
+            }
+            else
+            {
+                Start_Game(); // 동일한 게임 안나오도록 해야함
+            }
+        }
+
+        private void btnReStart_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+            this.Controls.Clear();
+            this.InitializeComponent();
+            txtID.Text = id;
+            this.btnStart.PerformClick();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            counter--;
+            if(counter == 0)
+            {
+                go = new GameOver();
+                thr = new Thread(new ThreadStart(go.Game_Over));
+
+                timer.Stop();
+
+                thr.IsBackground = true;
+                thr.Start();
+            }
+
+            lblTimerCount.Text = counter.ToString();
+
         }
     }
 }
