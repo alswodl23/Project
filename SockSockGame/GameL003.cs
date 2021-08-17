@@ -197,7 +197,7 @@ namespace SockSockGame
 
         }
 
-        private void chack()
+        private void check()
         {
             form.pnlMain.Controls.Remove(btnCard1);
             form.pnlMain.Controls.Remove(btnCard2);
@@ -244,7 +244,8 @@ namespace SockSockGame
 
             if (end == 4)
             {
-                chack();
+                check();
+                form.Next_Game();
             }
 
             btnPrev = buffer;

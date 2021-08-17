@@ -104,7 +104,7 @@ namespace SockSockGame
                 //종료구간
                 Image1.Visible = false;
                 lblGameName.Visible = false;
-                form.initplay();
+                form.Next_Game();
             }
             else
             {

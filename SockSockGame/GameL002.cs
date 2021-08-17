@@ -114,7 +114,7 @@ namespace SockSockGame
                 Image1.Visible = false;
                 lblGameName.Visible = false;
                 lblGameName1.Visible = false;
-                form.initplay();
+                form.Next_Game();
             }
             else
             {

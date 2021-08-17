@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Media;
-using System.Windows.Media;//참조 추가에서 PresentationCore.dll 추가해야함.
 
 namespace SockSockGame
 {
@@ -43,6 +42,12 @@ namespace SockSockGame
         //랜덤카테고리
         Random rand = new Random();
 
+        //
+        List<int> randomNumbers = new List<int>();
+
+        //클레스
+        GameC001 C001;
+
         //게임 클리어 조건구역
         int hartCount = 3;
         int clear = 0;
@@ -52,7 +57,7 @@ namespace SockSockGame
         bool soundCheck = false;
 
         //넘어가기 기능 카운트
-        int skipGame = 2;
+        int skipGame = 3;
 
         //ID 닉네임 저장
         string id = null;
@@ -74,7 +79,17 @@ namespace SockSockGame
         private void Form1_Load(object sender, EventArgs e)
         {
             initplay();
-            Sound();
+            //Sound();
+        }
+
+        internal void pnlMain_Add()
+        {
+            pnlMain.Controls.Add(lblTimer);
+            pnlMain.Controls.Add(lblTimerCount);
+            pnlMain.Controls.Add(ptbHeart1);
+            pnlMain.Controls.Add(ptbHeart2);
+            pnlMain.Controls.Add(ptbHeart3);
+            pnlMain.Controls.Add(btnNext);
         }
 
         internal void Visible_Game_Start()
@@ -110,55 +125,26 @@ namespace SockSockGame
             pnlMain.BackgroundImage = Properties.Resources.Main_BG1;//배경화면
         }
 
-
-        private void Sound()
+        internal void Next_Game()
         {
-            soundCheck = true;
-            int soundRand = rand.Next(0, 5);
-
-            switch (soundRand)
+            DialogResult result = MessageBox.Show("다음 게임으로 넘어갑니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
             {
-                case 0:
-                    //Swing by Peyruis | https://soundcloud.com/peyruis
-                    //Music promoted by https://www.mewpot.com
-                    //CC BY 3.0 | https://creativecommons.org/licenses/by/3.0/
-                    soundPlayer = new System.Media.SoundPlayer(Properties.Resources.MP_Swing);
-                    break;
-                case 1:
-                    soundPlayer = new System.Media.SoundPlayer(Properties.Resources.MP_Colours);
-                    break;
-                case 2:
-                    soundPlayer = new System.Media.SoundPlayer(Properties.Resources.MP_Dusk);
-                    break;
-                case 3:
-                    soundPlayer = new System.Media.SoundPlayer(Properties.Resources.MP_Halcyon);
-                    break;
-                case 4:
-                    soundPlayer = new System.Media.SoundPlayer(Properties.Resources.MP_Vast_Chant);
-                    break;
-                case 5:
-                    soundPlayer = new System.Media.SoundPlayer(Properties.Resources.MP_Duel_Funk_Rock);
-                    break;
-                default:
-                    break;
+                Start_Game();
             }
-            soundPlayer.PlayLooping();
-            soundPlayer.Play();
         }
 
-        private void Sound_stop()
+        internal void Start_Game()
         {
-            soundCheck = false;
-            soundPlayer.Stop();
-        }
-
-
-        private void Start_Game()
-        {
-            counter = 60;
-            timer.Enabled = true;
             int i = rand.Next(0, 6);
-            switch (4)
+
+            randomNumbers.Add(i);
+
+            while (randomNumbers.Contains(i))
+            {
+                i = rand.Next(3, 6);
+            }
+            switch (i)
             {
                 case 1:
                     GameC001 C001 = new GameC001();
@@ -204,6 +190,10 @@ namespace SockSockGame
             {
                 id = txtID.Text;
                 MessageBox.Show("게임을 시작합니다. 준비 되셨죠?");
+
+                counter = 60;
+                timer.Enabled = true;
+
                 Start_Game();
             }
         }
@@ -245,7 +235,6 @@ namespace SockSockGame
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            skipGame--;
             if (skipGame == 0)
             {
                 btnNext.Enabled = false;
@@ -253,8 +242,25 @@ namespace SockSockGame
             }
             else
             {
-                Start_Game(); // 동일한 게임 안나오도록 해야함
+                if (skipGame == 3)
+                {
+                    this.ptbHeart3.BackgroundImage = Properties.Resources.hart_BG;
+                }
+                else if (skipGame == 2)
+                {
+                    this.ptbHeart2.BackgroundImage = Properties.Resources.hart_BG;
+                }
+                else if (skipGame == 1)
+                {
+                    this.ptbHeart1.BackgroundImage = Properties.Resources.hart_BG;
+                }
+
+                pnlMain.Controls.Clear();
+                pnlMain_Add();
+                Visible_Game_Start();
+                Next_Game();
             }
+            skipGame--;
         }
 
         private void btnReStart_Click(object sender, EventArgs e)
