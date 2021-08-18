@@ -26,6 +26,8 @@ namespace SockSockGame
         int card = 0;
         int end = 0;
 
+        //사운드
+        System.Media.SoundPlayer soundPlayer1;
 
         //카드 뒤집기용 버튼 8개
         Button btnCard1 = new Button();
@@ -212,6 +214,10 @@ namespace SockSockGame
 
         private void btnCard_Click(object sender, EventArgs e)
         {
+            soundPlayer1 = new System.Media.SoundPlayer(Properties.Resources.Bbong);
+            soundPlayer1.Stop();
+            soundPlayer1.Play();
+
             Button buffer = (Button)sender;
 
             buffer.FlatAppearance.BorderColor = System.Drawing.Color.DarkOrange;

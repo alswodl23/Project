@@ -14,7 +14,7 @@ namespace SockSockGame
 {
     public partial class Form1 : Form
     {
-        private void Sound()
+        public void Sound()
         {
             soundCheck = true;
             int soundRand = rand.Next(0, 5);

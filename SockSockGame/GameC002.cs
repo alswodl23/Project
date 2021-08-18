@@ -18,9 +18,15 @@ namespace SockSockGame
         //List<char> labels = new List<char>() { 'M', 'a', 'k', 'e', 'a', 'R', 'a', 'i', 'n', 'b', 'o', 'w' };
         List<string> labels = new List<string>() { "M", "o", "v", "e", "a", "R", "a", "i", "n", "b", "o", "w" };
 
+        //패널 생성 및 속성지정
+        Panel pnlGameName = new Panel();
+        Panel pnlColor = new Panel();
+        Panel DropDestination = new Panel();
+        PictureBox rightArrow = new PictureBox();
 
         //드래그 중인 picturebox
         PictureBox pbSelected;
+
         //배경 설정
         internal void InitGame()
         {
@@ -30,6 +36,12 @@ namespace SockSockGame
             int Xplus = 66;
             int lblCoordX = 70;
             int lblCoordY = 0;
+
+
+            //레이블 올릴 패널 속성
+            pnlGameName.Size = new Size(989, 214);
+            pnlGameName.BackColor = Color.Transparent;
+            pnlGameName.Location = new Point(0, 0);
 
             //레이블 생성 및 속성, 등록
             for (int i = 0; i < labels.Count; i++)
@@ -59,15 +71,16 @@ namespace SockSockGame
                 }
                 lblRainbow.Location = new Point(lblCoordX, lblCoordY);
 
-                form.pnlMain.Controls.Add(lblRainbow);
+                pnlGameName.Controls.Add(lblRainbow);
             }
+            form.pnlMain.Controls.Add(pnlGameName);
 
             //컬러박스 패널 및 픽쳐박스 컨트롤 추가 메소드
             CreateColorBox();
             createDropBox();
 
             //중간 arrow 이미지 생성
-            PictureBox rightArrow = new PictureBox();
+            
             rightArrow.BackColor = Color.Transparent;
             rightArrow.BackgroundImage = Properties.Resources.rightArrow;
             rightArrow.BackgroundImageLayout = ImageLayout.Stretch;
@@ -82,6 +95,17 @@ namespace SockSockGame
         {
             var DroppedPb = (PictureBox)e.Data.GetData(typeof(PictureBox));
             ((PictureBox)e.Data.GetData(typeof(PictureBox))).Parent = (Panel)sender;
+            
+            
+            //종료구간
+            if(DropDestination.Controls.Count == 7)
+            {
+                form.pnlMain.Controls.Remove(pnlColor);
+                form.pnlMain.Controls.Remove(DropDestination);
+                form.pnlMain.Controls.Remove(rightArrow);
+                form.pnlMain.Controls.Remove(pnlGameName);
+                form.Next_Game();
+            }
 
         }
 
@@ -92,9 +116,6 @@ namespace SockSockGame
 
         internal void CreateColorBox()
         {
-            //패널 생성 및 속성지정
-            Panel pnlColor = new Panel();
-            
             pnlColor.Location = new Point(168, 270);
             pnlColor.Size = new Size(222, 374);
             pnlColor.BackColor = Color.SkyBlue;
@@ -164,7 +185,7 @@ namespace SockSockGame
         //드래그해서 드롭할 패널 생성
         internal void createDropBox()
         {
-            Panel DropDestination = new Panel();
+            
             DropDestination.Size = new Size(222, 374);
             DropDestination.BackColor = Color.SkyBlue;
             DropDestination.AllowDrop = true;
@@ -172,21 +193,6 @@ namespace SockSockGame
             
             DropDestination.DragDrop += PnlMain_DragDrop;
             DropDestination.DragEnter += PnlMain_DragEnter;
-
-            //int nX = 10;
-            //int nY = 20;
-
-            //for(int i = 0; i < 7; i++)
-            //{
-            //    Label Color = new Label();
-            //    Color.Text = lblColors[i];
-            //    Color.Font = new Font("맑은고딕", 40, FontStyle.Bold);
-                
-            //    Color.Location = new Point(nX, nY);
-            //    nX += 95;
-
-            //    DropDestination.Controls.Add(Color);
-            //}
             
             form.pnlMain.Controls.Add(DropDestination);
         }

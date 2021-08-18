@@ -25,12 +25,13 @@ namespace SockSockGame
         public Label lblGameName1 = new Label();
 
         int clear = 0;
+        int j = form.skipGame;
 
         private void play()
         {
-            while (true)
+            for (int CD = 0; CD < 5; CD++)
             {
-                Thread.Sleep(700);
+                Thread.Sleep(800);
                 int i = rand.Next(6);
                 if (form.InvokeRequired)
                 {
@@ -59,12 +60,30 @@ namespace SockSockGame
                         }
                     }));
                 }
+
+            }
+
+            //종료시점
+            if (form.InvokeRequired)
+            {
+                form.Invoke(new MethodInvoker(delegate ()
+                {
+                    if (clear == 1)
+                    {
+                        form.pnlMain.Controls.Remove(lblGameName);
+                        form.pnlMain.Controls.Remove(lblGameName1);
+                        form.pnlMain.Controls.Remove(Image1);
+                        form.thrOn = false;
+                        form.Next_Game();
+                    }
+                }));
             }
         }
 
         public void Game_L002()
         {
-            form.thr = new Thread(new ThreadStart(play));
+            form.thrG = new Thread(new ThreadStart(play));
+            form.thrOn = true;
 
             //초반 화면 정리 및 배치
             form.Visible_Game_Start();
@@ -100,21 +119,36 @@ namespace SockSockGame
             clear = 1;
             Image1.Click += Image_Click;
 
-            form.thr.IsBackground = true;
-            form.thr.Start();
+            j = form.skipGame;
+            form.thrG.IsBackground = true;
+            form.thrG.Start();
         }
 
         private void Image_Click(object sender, EventArgs e)
         {
+            System.Media.SoundPlayer soundPlayer1;
+
+            soundPlayer1 = new System.Media.SoundPlayer(Properties.Resources.Bbong);
+            soundPlayer1.Stop();
+            soundPlayer1.Play();
+
             clear--;
 
             if (clear == 0)
             {
-                //종료구간
-                Image1.Visible = false;
-                lblGameName.Visible = false;
-                lblGameName1.Visible = false;
-                form.Next_Game();
+                if (form.skipGame == 0)
+                {
+                    form.counter -= 10;
+                    form.pnlMain.Controls.Remove(lblGameName);
+                    form.pnlMain.Controls.Remove(lblGameName1);
+                    form.pnlMain.Controls.Remove(Image1);
+                    form.thrOn = false;
+                    form.Next_Game();
+                }
+                else
+                {
+                    form.btnNext_Click(sender, e);
+                }
             }
             else
             {

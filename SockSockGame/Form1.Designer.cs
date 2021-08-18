@@ -222,6 +222,7 @@ namespace SockSockGame
             this.btnRecord.TabIndex = 26;
             this.btnRecord.Text = "랭킹";
             this.btnRecord.UseVisualStyleBackColor = true;
+            this.btnRecord.Click += new System.EventHandler(this.btnRecord_Click);
             // 
             // btnReStart
             // 
@@ -288,7 +289,6 @@ namespace SockSockGame
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(989, 763);
             this.pnlMain.TabIndex = 4;
-            this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
             // 
             // pnlHowToPlay
             // 

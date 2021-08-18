@@ -30,48 +30,42 @@ namespace SockSockGame
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-        private void pnlMain_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
 
         //랜덤카테고리
         Random rand = new Random();
 
-        //
+        //랜덤숫자 배열에 담아 둠
         List<int> randomNumbers = new List<int>();
-
-        //클레스
-        GameC001 C001;
-
-        //게임 클리어 조건구역
-        int hartCount = 3;
-        int clear = 0;
 
         //사운드
         System.Media.SoundPlayer soundPlayer;
         bool soundCheck = false;
 
         //넘어가기 기능 카운트
-        int skipGame = 3;
+        public int skipGame = 3;
 
         //ID 닉네임 저장
-        string id = null;
+        public string id = null;
 
         //타이머
-        int counter = 0;
+        public int counter = 0;
 
         //스레드
         public Thread thr;
+        public Thread thrG;
+        public bool thrOn = false;
 
         //게임오버
         GameOver go;
 
-        public Form1()
+        //점수
+        int Score_Counrt = 0;
+        int Score = 0;
+
+        //랭킹보드
+        RankingBoard[] Rank = new RankingBoard[10];
+
+       public Form1()
         {
             InitializeComponent();
         }
@@ -130,21 +124,30 @@ namespace SockSockGame
             DialogResult result = MessageBox.Show("다음 게임으로 넘어갑니다.", "확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (result == DialogResult.OK)
             {
-                Start_Game();
+                if (counter > 0)
+                {
+                    Start_Game();
+                }
             }
         }
 
         internal void Start_Game()
         {
-            int i = rand.Next(0, 6);
+            int GameNumb = rand.Next(1, 4);
 
-            randomNumbers.Add(i);
-
-            while (randomNumbers.Contains(i))
+            while (true)
             {
-                i = rand.Next(3, 6);
+                if (randomNumbers.Contains(GameNumb))
+                {
+                    GameNumb = rand.Next(1, 4);
+                }
+                else
+                {
+                    break;
+                }
             }
-            switch (i)
+            randomNumbers.Add(GameNumb);
+            switch (5)
             {
                 case 1:
                     GameC001 C001 = new GameC001();
@@ -155,18 +158,37 @@ namespace SockSockGame
                     C002.InitGame();
                     break;
                 case 3:
+                    GameC003 C003 = new GameC003();
+                    C003.InitGame();
+                    break;
+                case 4:
                     GameL001 L001 = new GameL001();
                     L001.Game_L001();
                     break;
-                case 4:
+                case 5:
                     GameL002 L002 = new GameL002();
                     L002.Game_L002();
                     break;
-                case 5:
-                    GameL003 C003 = new GameL003();
-                    C003.initGameL003();
+                case 6:
+                    GameL003 L003 = new GameL003();
+                    L003.initGameL003();
                     break;
+                case 7:
+                    GameS001 S001 = new GameS001();
+                    S001.InitGame();
+                    break;
+                //case 7:
+                //    GameK001 K001 = new GameK001();
+                //    K001.InitGameK001();
+                //    break;
             }
+            if (Score_Counrt != 0)
+            {
+                Score += Score_Counrt * 100;
+
+                lblScore.Text = Score.ToString();
+            }
+            Score_Counrt++;
         }
 
         ///////////////////////////Form1.cs[디자인]에서 추가한 이벤트
@@ -191,7 +213,7 @@ namespace SockSockGame
                 id = txtID.Text;
                 MessageBox.Show("게임을 시작합니다. 준비 되셨죠?");
 
-                counter = 60;
+                counter = 10;
                 timer.Enabled = true;
 
                 Start_Game();
@@ -233,34 +255,44 @@ namespace SockSockGame
             this.InitializeComponent();
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        public void btnNext_Click(object sender, EventArgs e)
         {
-            if (skipGame == 0)
+            if (thrOn == true)
             {
-                btnNext.Enabled = false;
-                //레이블로 넘어가기 소진여부 알려주면 좋을듯?
+                thrOn = false;
+                thrG.Abort();
             }
-            else
+            if (skipGame != 0)
             {
                 if (skipGame == 3)
                 {
                     this.ptbHeart3.BackgroundImage = Properties.Resources.hart_BG;
+                    Score_Counrt = 0;
                 }
                 else if (skipGame == 2)
                 {
                     this.ptbHeart2.BackgroundImage = Properties.Resources.hart_BG;
+                    Score_Counrt = 0;
                 }
                 else if (skipGame == 1)
                 {
                     this.ptbHeart1.BackgroundImage = Properties.Resources.hart_BG;
+                    Score_Counrt = 0;
                 }
 
+                
                 pnlMain.Controls.Clear();
                 pnlMain_Add();
                 Visible_Game_Start();
                 Next_Game();
             }
+
             skipGame--;
+
+            if (skipGame == 0)
+            {
+                btnNext.Enabled = false;
+            }
         }
 
         private void btnReStart_Click(object sender, EventArgs e)
@@ -275,18 +307,29 @@ namespace SockSockGame
         private void timer_Tick(object sender, EventArgs e)
         {
             counter--;
-            if(counter == 0)
+            if(counter <= 0)
             {
                 go = new GameOver();
                 thr = new Thread(new ThreadStart(go.Game_Over));
 
-                timer.Stop();
+                if (thrOn == true)
+                {
+                    thrOn = false;
+                    thrG.Abort();
+                }
 
+                timer.Stop();
+                
                 thr.IsBackground = true;
                 thr.Start();
             }
 
             lblTimerCount.Text = counter.ToString();
+
+        }
+
+        private void btnRecord_Click(object sender, EventArgs e)
+        {
 
         }
     }

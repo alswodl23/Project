@@ -22,7 +22,6 @@ namespace SockSockGame
 
         //Lable 게임 제목 
         public Label lblGameName = new Label();
-        public Label lblGameName1 = new Label();
 
         int clear = 0;
 
@@ -64,12 +63,11 @@ namespace SockSockGame
 
         public void Game_L001()
         {
-            form.thr = new Thread(new ThreadStart(play));
-
+            form.thrG = new Thread(new ThreadStart(play));
+            form.thrOn = true; 
             //초반 화면 정리 및 배치
             form.Visible_Game_Start();
             form.pnlMain.Controls.Add(lblGameName);
-            form.pnlMain.Controls.Add(lblGameName1);
             form.pnlMain.Controls.Add(Image1);
             form.BG1();
 
@@ -88,22 +86,28 @@ namespace SockSockGame
             Image1.BackColor = System.Drawing.Color.Transparent;
             Image1.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            clear = 10;
+            clear = 5;
             Image1.Click += Image_Click;
 
-            form.thr.IsBackground = true;
-            form.thr.Start();
+            form.thrG.IsBackground = true;
+            form.thrG.Start();
         }
 
         private void Image_Click(object sender, EventArgs e)
         {
             clear--;
+            System.Media.SoundPlayer soundPlayer1;
+
+            soundPlayer1 = new System.Media.SoundPlayer(Properties.Resources.Bbong);
+            soundPlayer1.Stop();
+            soundPlayer1.Play();
 
             if (clear == 0)
             {
                 //종료구간
                 Image1.Visible = false;
                 lblGameName.Visible = false;
+                form.thrOn = false;
                 form.Next_Game();
             }
             else

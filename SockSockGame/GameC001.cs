@@ -17,7 +17,7 @@ namespace SockSockGame
         static Random rand = new Random();
 
         //게임 클리어 여부 확인을 위한 변수
-        internal static bool clear = true;
+        int clearBubble = 0;
 
         //현재 클릭해야하는 숫자
         int shouldClick = 1;
@@ -102,6 +102,12 @@ namespace SockSockGame
             {
                 shouldClick++;
                 form.pnlMain.Controls.Remove(btn);
+                clearBubble++;
+                if(clearBubble == 10)
+                {
+                    //클리어 및 종료구간
+                    form.Next_Game();
+                }
             }
 
         }

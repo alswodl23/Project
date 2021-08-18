@@ -58,12 +58,15 @@
     </Compile>
     <Compile Include="GameC001.cs" />
     <Compile Include="GameC002.cs" />
+    <Compile Include="GameC003.cs" />
     <Compile Include="GameL001.cs" />
     <Compile Include="GameL002.cs" />
     <Compile Include="GameL003.cs" />
     <Compile Include="GameOver.cs" />
+    <Compile Include="GameS001.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RankingBoard.cs" />
     <Compile Include="Sound.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +188,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Duduge_Out2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bbong.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GameS001BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paperResult.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rockResult.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rsp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scissor.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scissorResult.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
