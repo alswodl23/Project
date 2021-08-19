@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SockSockGame
 {
@@ -12,18 +13,18 @@ namespace SockSockGame
     {
         int Num;
         private string[] RName;
-        private int[] RScore;
+        private string[] RScore;
 
         public RankingBoard() 
         {
             Num = 10;
             RName = new string[Num];
-            RScore = new int[Num];
+            RScore = new string[Num];
 
             for (int i = 0; i < Num; i++)
             {
                 RName[i] = null;
-                RScore[i] = 0;
+                RScore[i] = null;
             }
         }
 
@@ -35,14 +36,14 @@ namespace SockSockGame
                 {
                     int numClone = Num;
                     string[] RNameClone = new string[Num];
-                    int[] RScoreClone = new int[Num];
+                    string[] RScoreClone = new string[Num];
 
                     RNameClone = RName;
                     RScoreClone = RScore;
 
                     Num += 5;
                     RName = new string[Num];
-                    RScore = new int[Num];
+                    RScore = new string[Num];
 
                     for (int j = 0; j < Num - 5; j++)
                     {
@@ -54,7 +55,7 @@ namespace SockSockGame
                         else
                         {
                             RName[j] = null;
-                            RScore[j] = 0;
+                            RScore[j] = null;
                         }
                     }
                 }
@@ -62,7 +63,7 @@ namespace SockSockGame
                 if (RName[i] == null)
                 {
                     RName[i] = _RName;
-                    RScore[i] = _RScore;
+                    RScore[i] = _RScore.ToString();
                     break;
                 }
             }
@@ -71,17 +72,17 @@ namespace SockSockGame
         public void ReversScore()//내림차순 9,8,7,6... 
         {
             string SaveName = RName[0];
-            int SaveInt = RScore[0];
+            string SaveScore = RScore[0];
 
             for (int i = 0; i < Num - 1; i++)
             {
                 for (int j = (0 + i); j < Num - 1; j++)
                 {
-                    if (RScore[i] <= RScore[j + 1])
+                    if (Convert.ToInt32(RScore[i]) <= Convert.ToInt32(RScore[j + 1]))
                     {
-                        SaveInt = RScore[i];
+                        SaveScore = RScore[i];
                         RScore[i] = RScore[j + 1];
-                        RScore[j + 1] = SaveInt;
+                        RScore[j + 1] = SaveScore;
 
                         SaveName = RName[i];
                         RName[i] = RName[j + 1];
@@ -98,8 +99,26 @@ namespace SockSockGame
             for (int i = Num - 1; i >= Num - lim; i--)
             {
                 RName[i] = null;
-                RScore[i] = 0;
+                RScore[i] = null;
             }
+        }
+
+        public void RankSave()
+        {
+            string path1 = @"MyTest1.txt";
+            string path2 = @"MyTest2.txt";
+
+            File.WriteAllLines(path1, RName, Encoding.UTF8);
+            File.WriteAllLines(path2, RScore, Encoding.UTF8);
+        }
+
+        public void RankLoad()
+        {
+            string path1 = @"MyTest1.txt";
+            string path2 = @"MyTest2.txt";
+
+            RName = File.ReadAllLines(path1, Encoding.UTF8);
+            RScore = File.ReadAllLines(path2, Encoding.UTF8);
         }
 
         public String Name_get(int Num)
@@ -109,7 +128,7 @@ namespace SockSockGame
 
         public int Score_get(int Num)
         {
-            return RScore[Num - 1];
+            return Convert.ToInt32(RScore[Num - 1]);
         }
     }
 }

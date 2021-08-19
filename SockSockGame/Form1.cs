@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Media;
+using System.IO;
 
 namespace SockSockGame
 {
@@ -35,7 +36,7 @@ namespace SockSockGame
         Random rand = new Random();
 
         //랜덤숫자 배열에 담아 둠
-        List<int> randomNumbers = new List<int>();
+        List<int> randomNumbers;
 
         //사운드
         System.Media.SoundPlayer soundPlayer;
@@ -127,6 +128,9 @@ namespace SockSockGame
 
             thr.IsBackground = true;
             thr.Start();
+
+            Ranking.Add(id, Score);
+            Ranking.ReversScore();
         }
 
         public Form1()
@@ -138,7 +142,8 @@ namespace SockSockGame
         {
             initplay();
             //Sound();
-            Rank_board();
+            //Rank_board();
+            Ranking.RankLoad();
         }
 
         internal void pnlMain_Add()
@@ -198,11 +203,11 @@ namespace SockSockGame
 
         internal void Start_Game()
         {
-            int GameNumb = rand.Next(1, 3);
+            int GameNumb = rand.Next(1, 10);
 
             while (true)
             {
-                if (randomNumbers.Count == 2)//모든 게임을 실행했을때 게임 종료.
+                if (randomNumbers.Count == 9)//모든 게임을 실행했을때 게임 종료.
                 {
                     DialogResult result = MessageBox.Show("모든 게임을 완료하셨습니다! 축하드립니다!", "확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GameEnd();
@@ -210,7 +215,7 @@ namespace SockSockGame
                 }
                 else if (randomNumbers.Contains(GameNumb))
                 {
-                    GameNumb = rand.Next(1, 3);
+                    GameNumb = rand.Next(1, 10);
                 }
                 else
                 {
@@ -277,7 +282,7 @@ namespace SockSockGame
         {
             if (txtID.Text == "" || txtID.Text == "이름을 입력해주세요")
             {
-                MessageBox.Show("닉네임을 입력해주세요", "알림", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("닉네임을 입력해주세요(10자 이하)", "알림", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (txtID.Text.Length > 10)
             {
@@ -285,6 +290,8 @@ namespace SockSockGame
             }
             else
             {
+                randomNumbers = new List<int>();
+
                 id = txtID.Text;
                 string startTxt = "게임을 시작합니다. 준비 되셨죠?";
                 string startTxtName = id + "님! " + startTxt;
@@ -397,6 +404,7 @@ namespace SockSockGame
         {
             if (pnlRank.Visible == false)
             {
+                btnRecord.Text = "랭킹(닫기)";
                 Ranking.ReversScore();
                 Ranking.clear10();
                 Ranking_print();
@@ -405,8 +413,14 @@ namespace SockSockGame
             }
             else if(pnlRank.Visible == true)
             {
+                btnRecord.Text = "랭킹";
                 pnlRank.Visible = false;
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Ranking.RankSave();
         }
     }
 }

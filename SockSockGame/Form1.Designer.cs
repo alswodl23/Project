@@ -30,6 +30,7 @@ namespace SockSockGame
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txtCopyright = new System.Windows.Forms.TextBox();
             this.lblScore = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,6 +44,7 @@ namespace SockSockGame
             this.btnEnd = new System.Windows.Forms.Button();
             this.btnRecord = new System.Windows.Forms.Button();
             this.btnReStart = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.ptbSoundUp = new System.Windows.Forms.PictureBox();
             this.ptbSoundDown = new System.Windows.Forms.PictureBox();
             this.ptbSound = new System.Windows.Forms.PictureBox();
@@ -91,7 +93,6 @@ namespace SockSockGame
             this.btnHowToPlay = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.pnlNavi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSoundUp)).BeginInit();
@@ -123,7 +124,7 @@ namespace SockSockGame
             this.lblScore.AutoSize = true;
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblScore.ForeColor = System.Drawing.Color.White;
-            this.lblScore.Location = new System.Drawing.Point(158, 105);
+            this.lblScore.Location = new System.Drawing.Point(159, 105);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(24, 25);
             this.lblScore.TabIndex = 4;
@@ -135,7 +136,7 @@ namespace SockSockGame
             this.groupBox1.Controls.Add(this.rbtEasy);
             this.groupBox1.Controls.Add(this.rbtNormal);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(45, 160);
+            this.groupBox1.Location = new System.Drawing.Point(43, 160);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 65);
             this.groupBox1.TabIndex = 15;
@@ -185,7 +186,7 @@ namespace SockSockGame
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(79, 105);
+            this.label2.Location = new System.Drawing.Point(80, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 25);
             this.label2.TabIndex = 1;
@@ -196,7 +197,7 @@ namespace SockSockGame
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(28, 34);
+            this.label1.Location = new System.Drawing.Point(43, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(193, 39);
             this.label1.TabIndex = 0;
@@ -267,6 +268,11 @@ namespace SockSockGame
             this.btnReStart.UseVisualStyleBackColor = true;
             this.btnReStart.Click += new System.EventHandler(this.btnReStart_Click);
             // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // ptbSoundUp
             // 
             this.ptbSoundUp.BackColor = System.Drawing.Color.Transparent;
@@ -325,6 +331,9 @@ namespace SockSockGame
             // 
             // pnlRank
             // 
+            this.pnlRank.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRank.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlRank.BackgroundImage")));
+            this.pnlRank.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlRank.Controls.Add(this.lblRankScore10);
             this.pnlRank.Controls.Add(this.lblRankId10);
             this.pnlRank.Controls.Add(this.label31);
@@ -355,17 +364,17 @@ namespace SockSockGame
             this.pnlRank.Controls.Add(this.lblRankScore1);
             this.pnlRank.Controls.Add(this.lblRankId1);
             this.pnlRank.Controls.Add(this.label3);
-            this.pnlRank.Location = new System.Drawing.Point(228, 94);
+            this.pnlRank.Location = new System.Drawing.Point(151, 34);
             this.pnlRank.Name = "pnlRank";
-            this.pnlRank.Size = new System.Drawing.Size(525, 531);
+            this.pnlRank.Size = new System.Drawing.Size(670, 692);
             this.pnlRank.TabIndex = 21;
             this.pnlRank.Visible = false;
             // 
             // lblRankScore10
             // 
             this.lblRankScore10.AutoSize = true;
-            this.lblRankScore10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore10.Location = new System.Drawing.Point(346, 449);
+            this.lblRankScore10.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankScore10.Location = new System.Drawing.Point(456, 609);
             this.lblRankScore10.Name = "lblRankScore10";
             this.lblRankScore10.Size = new System.Drawing.Size(18, 20);
             this.lblRankScore10.TabIndex = 51;
@@ -374,18 +383,18 @@ namespace SockSockGame
             // lblRankId10
             // 
             this.lblRankId10.AutoSize = true;
-            this.lblRankId10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId10.Location = new System.Drawing.Point(169, 449);
+            this.lblRankId10.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId10.Location = new System.Drawing.Point(223, 609);
             this.lblRankId10.Name = "lblRankId10";
-            this.lblRankId10.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId10.Size = new System.Drawing.Size(143, 20);
             this.lblRankId10.TabIndex = 50;
             this.lblRankId10.Text = "닉네임 들어갈 자리";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label31.Location = new System.Drawing.Point(108, 449);
+            this.label31.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label31.Location = new System.Drawing.Point(157, 610);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(27, 20);
             this.label31.TabIndex = 49;
@@ -394,8 +403,8 @@ namespace SockSockGame
             // lblRankScore9
             // 
             this.lblRankScore9.AutoSize = true;
-            this.lblRankScore9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore9.Location = new System.Drawing.Point(346, 405);
+            this.lblRankScore9.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankScore9.Location = new System.Drawing.Point(456, 565);
             this.lblRankScore9.Name = "lblRankScore9";
             this.lblRankScore9.Size = new System.Drawing.Size(18, 20);
             this.lblRankScore9.TabIndex = 48;
@@ -404,18 +413,18 @@ namespace SockSockGame
             // lblRankId9
             // 
             this.lblRankId9.AutoSize = true;
-            this.lblRankId9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId9.Location = new System.Drawing.Point(169, 405);
+            this.lblRankId9.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId9.Location = new System.Drawing.Point(223, 565);
             this.lblRankId9.Name = "lblRankId9";
-            this.lblRankId9.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId9.Size = new System.Drawing.Size(143, 20);
             this.lblRankId9.TabIndex = 47;
             this.lblRankId9.Text = "닉네임 들어갈 자리";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label28.Location = new System.Drawing.Point(108, 405);
+            this.label28.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label28.Location = new System.Drawing.Point(161, 566);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(18, 20);
             this.label28.TabIndex = 46;
@@ -424,8 +433,8 @@ namespace SockSockGame
             // lblRankScore8
             // 
             this.lblRankScore8.AutoSize = true;
-            this.lblRankScore8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore8.Location = new System.Drawing.Point(346, 361);
+            this.lblRankScore8.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankScore8.Location = new System.Drawing.Point(456, 521);
             this.lblRankScore8.Name = "lblRankScore8";
             this.lblRankScore8.Size = new System.Drawing.Size(18, 20);
             this.lblRankScore8.TabIndex = 45;
@@ -434,18 +443,18 @@ namespace SockSockGame
             // lblRankId8
             // 
             this.lblRankId8.AutoSize = true;
-            this.lblRankId8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId8.Location = new System.Drawing.Point(169, 361);
+            this.lblRankId8.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId8.Location = new System.Drawing.Point(223, 521);
             this.lblRankId8.Name = "lblRankId8";
-            this.lblRankId8.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId8.Size = new System.Drawing.Size(143, 20);
             this.lblRankId8.TabIndex = 44;
             this.lblRankId8.Text = "닉네임 들어갈 자리";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label25.Location = new System.Drawing.Point(108, 361);
+            this.label25.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label25.Location = new System.Drawing.Point(161, 522);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(18, 20);
             this.label25.TabIndex = 43;
@@ -454,8 +463,8 @@ namespace SockSockGame
             // lblRankScore7
             // 
             this.lblRankScore7.AutoSize = true;
-            this.lblRankScore7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore7.Location = new System.Drawing.Point(346, 317);
+            this.lblRankScore7.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankScore7.Location = new System.Drawing.Point(456, 477);
             this.lblRankScore7.Name = "lblRankScore7";
             this.lblRankScore7.Size = new System.Drawing.Size(18, 20);
             this.lblRankScore7.TabIndex = 42;
@@ -464,18 +473,18 @@ namespace SockSockGame
             // lblRankId7
             // 
             this.lblRankId7.AutoSize = true;
-            this.lblRankId7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId7.Location = new System.Drawing.Point(169, 317);
+            this.lblRankId7.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId7.Location = new System.Drawing.Point(223, 477);
             this.lblRankId7.Name = "lblRankId7";
-            this.lblRankId7.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId7.Size = new System.Drawing.Size(143, 20);
             this.lblRankId7.TabIndex = 41;
             this.lblRankId7.Text = "닉네임 들어갈 자리";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label22.Location = new System.Drawing.Point(108, 317);
+            this.label22.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label22.Location = new System.Drawing.Point(161, 478);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(18, 20);
             this.label22.TabIndex = 40;
@@ -484,8 +493,8 @@ namespace SockSockGame
             // lblRankScore6
             // 
             this.lblRankScore6.AutoSize = true;
-            this.lblRankScore6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore6.Location = new System.Drawing.Point(346, 273);
+            this.lblRankScore6.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankScore6.Location = new System.Drawing.Point(456, 433);
             this.lblRankScore6.Name = "lblRankScore6";
             this.lblRankScore6.Size = new System.Drawing.Size(18, 20);
             this.lblRankScore6.TabIndex = 39;
@@ -494,18 +503,18 @@ namespace SockSockGame
             // lblRankId6
             // 
             this.lblRankId6.AutoSize = true;
-            this.lblRankId6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId6.Location = new System.Drawing.Point(169, 273);
+            this.lblRankId6.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId6.Location = new System.Drawing.Point(223, 433);
             this.lblRankId6.Name = "lblRankId6";
-            this.lblRankId6.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId6.Size = new System.Drawing.Size(143, 20);
             this.lblRankId6.TabIndex = 38;
             this.lblRankId6.Text = "닉네임 들어갈 자리";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label19.Location = new System.Drawing.Point(108, 273);
+            this.label19.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label19.Location = new System.Drawing.Point(161, 434);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(18, 20);
             this.label19.TabIndex = 37;
@@ -514,8 +523,8 @@ namespace SockSockGame
             // lblRankScore5
             // 
             this.lblRankScore5.AutoSize = true;
-            this.lblRankScore5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore5.Location = new System.Drawing.Point(346, 229);
+            this.lblRankScore5.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankScore5.Location = new System.Drawing.Point(456, 389);
             this.lblRankScore5.Name = "lblRankScore5";
             this.lblRankScore5.Size = new System.Drawing.Size(18, 20);
             this.lblRankScore5.TabIndex = 36;
@@ -524,18 +533,18 @@ namespace SockSockGame
             // lblRankId5
             // 
             this.lblRankId5.AutoSize = true;
-            this.lblRankId5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId5.Location = new System.Drawing.Point(169, 229);
+            this.lblRankId5.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId5.Location = new System.Drawing.Point(223, 389);
             this.lblRankId5.Name = "lblRankId5";
-            this.lblRankId5.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId5.Size = new System.Drawing.Size(143, 20);
             this.lblRankId5.TabIndex = 35;
             this.lblRankId5.Text = "닉네임 들어갈 자리";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label16.Location = new System.Drawing.Point(108, 229);
+            this.label16.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label16.Location = new System.Drawing.Point(161, 390);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(18, 20);
             this.label16.TabIndex = 34;
@@ -544,8 +553,8 @@ namespace SockSockGame
             // lblRankScore4
             // 
             this.lblRankScore4.AutoSize = true;
-            this.lblRankScore4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore4.Location = new System.Drawing.Point(346, 185);
+            this.lblRankScore4.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankScore4.Location = new System.Drawing.Point(456, 345);
             this.lblRankScore4.Name = "lblRankScore4";
             this.lblRankScore4.Size = new System.Drawing.Size(18, 20);
             this.lblRankScore4.TabIndex = 33;
@@ -554,18 +563,18 @@ namespace SockSockGame
             // lblRankId4
             // 
             this.lblRankId4.AutoSize = true;
-            this.lblRankId4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId4.Location = new System.Drawing.Point(169, 185);
+            this.lblRankId4.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId4.Location = new System.Drawing.Point(223, 345);
             this.lblRankId4.Name = "lblRankId4";
-            this.lblRankId4.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId4.Size = new System.Drawing.Size(143, 20);
             this.lblRankId4.TabIndex = 32;
             this.lblRankId4.Text = "닉네임 들어갈 자리";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(108, 185);
+            this.label13.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label13.Location = new System.Drawing.Point(161, 346);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(18, 20);
             this.label13.TabIndex = 31;
@@ -574,8 +583,8 @@ namespace SockSockGame
             // lblRankScore3
             // 
             this.lblRankScore3.AutoSize = true;
-            this.lblRankScore3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore3.Location = new System.Drawing.Point(346, 141);
+            this.lblRankScore3.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold);
+            this.lblRankScore3.Location = new System.Drawing.Point(456, 301);
             this.lblRankScore3.Name = "lblRankScore3";
             this.lblRankScore3.Size = new System.Drawing.Size(18, 20);
             this.lblRankScore3.TabIndex = 30;
@@ -584,18 +593,19 @@ namespace SockSockGame
             // lblRankId3
             // 
             this.lblRankId3.AutoSize = true;
-            this.lblRankId3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId3.Location = new System.Drawing.Point(169, 141);
+            this.lblRankId3.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId3.Location = new System.Drawing.Point(223, 301);
             this.lblRankId3.Name = "lblRankId3";
-            this.lblRankId3.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId3.Size = new System.Drawing.Size(143, 20);
             this.lblRankId3.TabIndex = 29;
             this.lblRankId3.Text = "닉네임 들어갈 자리";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(108, 141);
+            this.label9.Font = new System.Drawing.Font("Adobe 고딕 Std B", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.Location = new System.Drawing.Point(161, 302);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(18, 20);
             this.label9.TabIndex = 28;
@@ -604,60 +614,62 @@ namespace SockSockGame
             // lblRankScore2
             // 
             this.lblRankScore2.AutoSize = true;
-            this.lblRankScore2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore2.Location = new System.Drawing.Point(346, 97);
+            this.lblRankScore2.Font = new System.Drawing.Font("Adobe 고딕 Std B", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lblRankScore2.Location = new System.Drawing.Point(456, 254);
             this.lblRankScore2.Name = "lblRankScore2";
-            this.lblRankScore2.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore2.Size = new System.Drawing.Size(24, 26);
             this.lblRankScore2.TabIndex = 27;
             this.lblRankScore2.Text = "0";
             // 
             // lblRankId2
             // 
             this.lblRankId2.AutoSize = true;
-            this.lblRankId2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId2.Location = new System.Drawing.Point(169, 97);
+            this.lblRankId2.Font = new System.Drawing.Font("Adobe 고딕 Std B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRankId2.Location = new System.Drawing.Point(223, 250);
             this.lblRankId2.Name = "lblRankId2";
-            this.lblRankId2.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId2.Size = new System.Drawing.Size(170, 24);
             this.lblRankId2.TabIndex = 26;
             this.lblRankId2.Text = "닉네임 들어갈 자리";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(108, 97);
+            this.label6.Font = new System.Drawing.Font("Adobe 고딕 Std B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(160, 251);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 20);
+            this.label6.Size = new System.Drawing.Size(21, 24);
             this.label6.TabIndex = 25;
             this.label6.Text = "2";
             // 
             // lblRankScore1
             // 
             this.lblRankScore1.AutoSize = true;
-            this.lblRankScore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankScore1.Location = new System.Drawing.Point(346, 53);
+            this.lblRankScore1.Font = new System.Drawing.Font("Adobe 고딕 Std B", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lblRankScore1.Location = new System.Drawing.Point(456, 202);
             this.lblRankScore1.Name = "lblRankScore1";
-            this.lblRankScore1.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore1.Size = new System.Drawing.Size(84, 26);
             this.lblRankScore1.TabIndex = 24;
-            this.lblRankScore1.Text = "0";
+            this.lblRankScore1.Text = "100000";
             // 
             // lblRankId1
             // 
             this.lblRankId1.AutoSize = true;
-            this.lblRankId1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRankId1.Location = new System.Drawing.Point(169, 53);
+            this.lblRankId1.Font = new System.Drawing.Font("Adobe 고딕 Std B", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lblRankId1.Location = new System.Drawing.Point(223, 200);
             this.lblRankId1.Name = "lblRankId1";
-            this.lblRankId1.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId1.Size = new System.Drawing.Size(222, 26);
             this.lblRankId1.TabIndex = 23;
-            this.lblRankId1.Text = "닉네임 들어갈 자리";
+            this.lblRankId1.Text = "닉네임들어갈자리이다";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(108, 53);
+            this.label3.Font = new System.Drawing.Font("Adobe 고딕 Std B", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(158, 196);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 20);
+            this.label3.Size = new System.Drawing.Size(24, 26);
             this.label3.TabIndex = 22;
             this.label3.Text = "1";
             // 
@@ -825,11 +837,6 @@ namespace SockSockGame
             this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // timer
-            // 
-            this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -841,6 +848,7 @@ namespace SockSockGame
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
