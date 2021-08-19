@@ -47,6 +47,37 @@ namespace SockSockGame
             this.ptbSoundDown = new System.Windows.Forms.PictureBox();
             this.ptbSound = new System.Windows.Forms.PictureBox();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlRank = new System.Windows.Forms.Panel();
+            this.lblRankScore10 = new System.Windows.Forms.Label();
+            this.lblRankId10 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.lblRankScore9 = new System.Windows.Forms.Label();
+            this.lblRankId9 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.lblRankScore8 = new System.Windows.Forms.Label();
+            this.lblRankId8 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.lblRankScore7 = new System.Windows.Forms.Label();
+            this.lblRankId7 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.lblRankScore6 = new System.Windows.Forms.Label();
+            this.lblRankId6 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lblRankScore5 = new System.Windows.Forms.Label();
+            this.lblRankId5 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lblRankScore4 = new System.Windows.Forms.Label();
+            this.lblRankId4 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblRankScore3 = new System.Windows.Forms.Label();
+            this.lblRankId3 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblRankScore2 = new System.Windows.Forms.Label();
+            this.lblRankId2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblRankScore1 = new System.Windows.Forms.Label();
+            this.lblRankId1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlHowToPlay = new System.Windows.Forms.Panel();
             this.btnHowToOk = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -67,6 +98,7 @@ namespace SockSockGame
             ((System.ComponentModel.ISupportInitialize)(this.ptbSoundDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSound)).BeginInit();
             this.pnlMain.SuspendLayout();
+            this.pnlRank.SuspendLayout();
             this.pnlHowToPlay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbHeart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbHeart2)).BeginInit();
@@ -274,6 +306,7 @@ namespace SockSockGame
             // 
             this.pnlMain.BackgroundImage = global::SockSockGame.Properties.Resources.Main_BG1;
             this.pnlMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlMain.Controls.Add(this.pnlRank);
             this.pnlMain.Controls.Add(this.pnlHowToPlay);
             this.pnlMain.Controls.Add(this.ptbHeart3);
             this.pnlMain.Controls.Add(this.ptbHeart2);
@@ -289,6 +322,344 @@ namespace SockSockGame
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(989, 763);
             this.pnlMain.TabIndex = 4;
+            // 
+            // pnlRank
+            // 
+            this.pnlRank.Controls.Add(this.lblRankScore10);
+            this.pnlRank.Controls.Add(this.lblRankId10);
+            this.pnlRank.Controls.Add(this.label31);
+            this.pnlRank.Controls.Add(this.lblRankScore9);
+            this.pnlRank.Controls.Add(this.lblRankId9);
+            this.pnlRank.Controls.Add(this.label28);
+            this.pnlRank.Controls.Add(this.lblRankScore8);
+            this.pnlRank.Controls.Add(this.lblRankId8);
+            this.pnlRank.Controls.Add(this.label25);
+            this.pnlRank.Controls.Add(this.lblRankScore7);
+            this.pnlRank.Controls.Add(this.lblRankId7);
+            this.pnlRank.Controls.Add(this.label22);
+            this.pnlRank.Controls.Add(this.lblRankScore6);
+            this.pnlRank.Controls.Add(this.lblRankId6);
+            this.pnlRank.Controls.Add(this.label19);
+            this.pnlRank.Controls.Add(this.lblRankScore5);
+            this.pnlRank.Controls.Add(this.lblRankId5);
+            this.pnlRank.Controls.Add(this.label16);
+            this.pnlRank.Controls.Add(this.lblRankScore4);
+            this.pnlRank.Controls.Add(this.lblRankId4);
+            this.pnlRank.Controls.Add(this.label13);
+            this.pnlRank.Controls.Add(this.lblRankScore3);
+            this.pnlRank.Controls.Add(this.lblRankId3);
+            this.pnlRank.Controls.Add(this.label9);
+            this.pnlRank.Controls.Add(this.lblRankScore2);
+            this.pnlRank.Controls.Add(this.lblRankId2);
+            this.pnlRank.Controls.Add(this.label6);
+            this.pnlRank.Controls.Add(this.lblRankScore1);
+            this.pnlRank.Controls.Add(this.lblRankId1);
+            this.pnlRank.Controls.Add(this.label3);
+            this.pnlRank.Location = new System.Drawing.Point(228, 94);
+            this.pnlRank.Name = "pnlRank";
+            this.pnlRank.Size = new System.Drawing.Size(525, 531);
+            this.pnlRank.TabIndex = 21;
+            this.pnlRank.Visible = false;
+            // 
+            // lblRankScore10
+            // 
+            this.lblRankScore10.AutoSize = true;
+            this.lblRankScore10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore10.Location = new System.Drawing.Point(346, 449);
+            this.lblRankScore10.Name = "lblRankScore10";
+            this.lblRankScore10.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore10.TabIndex = 51;
+            this.lblRankScore10.Text = "0";
+            // 
+            // lblRankId10
+            // 
+            this.lblRankId10.AutoSize = true;
+            this.lblRankId10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId10.Location = new System.Drawing.Point(169, 449);
+            this.lblRankId10.Name = "lblRankId10";
+            this.lblRankId10.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId10.TabIndex = 50;
+            this.lblRankId10.Text = "닉네임 들어갈 자리";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label31.Location = new System.Drawing.Point(108, 449);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(27, 20);
+            this.label31.TabIndex = 49;
+            this.label31.Text = "10";
+            // 
+            // lblRankScore9
+            // 
+            this.lblRankScore9.AutoSize = true;
+            this.lblRankScore9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore9.Location = new System.Drawing.Point(346, 405);
+            this.lblRankScore9.Name = "lblRankScore9";
+            this.lblRankScore9.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore9.TabIndex = 48;
+            this.lblRankScore9.Text = "0";
+            // 
+            // lblRankId9
+            // 
+            this.lblRankId9.AutoSize = true;
+            this.lblRankId9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId9.Location = new System.Drawing.Point(169, 405);
+            this.lblRankId9.Name = "lblRankId9";
+            this.lblRankId9.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId9.TabIndex = 47;
+            this.lblRankId9.Text = "닉네임 들어갈 자리";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label28.Location = new System.Drawing.Point(108, 405);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(18, 20);
+            this.label28.TabIndex = 46;
+            this.label28.Text = "9";
+            // 
+            // lblRankScore8
+            // 
+            this.lblRankScore8.AutoSize = true;
+            this.lblRankScore8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore8.Location = new System.Drawing.Point(346, 361);
+            this.lblRankScore8.Name = "lblRankScore8";
+            this.lblRankScore8.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore8.TabIndex = 45;
+            this.lblRankScore8.Text = "0";
+            // 
+            // lblRankId8
+            // 
+            this.lblRankId8.AutoSize = true;
+            this.lblRankId8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId8.Location = new System.Drawing.Point(169, 361);
+            this.lblRankId8.Name = "lblRankId8";
+            this.lblRankId8.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId8.TabIndex = 44;
+            this.lblRankId8.Text = "닉네임 들어갈 자리";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label25.Location = new System.Drawing.Point(108, 361);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(18, 20);
+            this.label25.TabIndex = 43;
+            this.label25.Text = "8";
+            // 
+            // lblRankScore7
+            // 
+            this.lblRankScore7.AutoSize = true;
+            this.lblRankScore7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore7.Location = new System.Drawing.Point(346, 317);
+            this.lblRankScore7.Name = "lblRankScore7";
+            this.lblRankScore7.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore7.TabIndex = 42;
+            this.lblRankScore7.Text = "0";
+            // 
+            // lblRankId7
+            // 
+            this.lblRankId7.AutoSize = true;
+            this.lblRankId7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId7.Location = new System.Drawing.Point(169, 317);
+            this.lblRankId7.Name = "lblRankId7";
+            this.lblRankId7.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId7.TabIndex = 41;
+            this.lblRankId7.Text = "닉네임 들어갈 자리";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label22.Location = new System.Drawing.Point(108, 317);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(18, 20);
+            this.label22.TabIndex = 40;
+            this.label22.Text = "7";
+            // 
+            // lblRankScore6
+            // 
+            this.lblRankScore6.AutoSize = true;
+            this.lblRankScore6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore6.Location = new System.Drawing.Point(346, 273);
+            this.lblRankScore6.Name = "lblRankScore6";
+            this.lblRankScore6.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore6.TabIndex = 39;
+            this.lblRankScore6.Text = "0";
+            // 
+            // lblRankId6
+            // 
+            this.lblRankId6.AutoSize = true;
+            this.lblRankId6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId6.Location = new System.Drawing.Point(169, 273);
+            this.lblRankId6.Name = "lblRankId6";
+            this.lblRankId6.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId6.TabIndex = 38;
+            this.lblRankId6.Text = "닉네임 들어갈 자리";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label19.Location = new System.Drawing.Point(108, 273);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(18, 20);
+            this.label19.TabIndex = 37;
+            this.label19.Text = "6";
+            // 
+            // lblRankScore5
+            // 
+            this.lblRankScore5.AutoSize = true;
+            this.lblRankScore5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore5.Location = new System.Drawing.Point(346, 229);
+            this.lblRankScore5.Name = "lblRankScore5";
+            this.lblRankScore5.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore5.TabIndex = 36;
+            this.lblRankScore5.Text = "0";
+            // 
+            // lblRankId5
+            // 
+            this.lblRankId5.AutoSize = true;
+            this.lblRankId5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId5.Location = new System.Drawing.Point(169, 229);
+            this.lblRankId5.Name = "lblRankId5";
+            this.lblRankId5.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId5.TabIndex = 35;
+            this.lblRankId5.Text = "닉네임 들어갈 자리";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label16.Location = new System.Drawing.Point(108, 229);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(18, 20);
+            this.label16.TabIndex = 34;
+            this.label16.Text = "5";
+            // 
+            // lblRankScore4
+            // 
+            this.lblRankScore4.AutoSize = true;
+            this.lblRankScore4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore4.Location = new System.Drawing.Point(346, 185);
+            this.lblRankScore4.Name = "lblRankScore4";
+            this.lblRankScore4.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore4.TabIndex = 33;
+            this.lblRankScore4.Text = "0";
+            // 
+            // lblRankId4
+            // 
+            this.lblRankId4.AutoSize = true;
+            this.lblRankId4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId4.Location = new System.Drawing.Point(169, 185);
+            this.lblRankId4.Name = "lblRankId4";
+            this.lblRankId4.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId4.TabIndex = 32;
+            this.lblRankId4.Text = "닉네임 들어갈 자리";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.Location = new System.Drawing.Point(108, 185);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 20);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "4";
+            // 
+            // lblRankScore3
+            // 
+            this.lblRankScore3.AutoSize = true;
+            this.lblRankScore3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore3.Location = new System.Drawing.Point(346, 141);
+            this.lblRankScore3.Name = "lblRankScore3";
+            this.lblRankScore3.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore3.TabIndex = 30;
+            this.lblRankScore3.Text = "0";
+            // 
+            // lblRankId3
+            // 
+            this.lblRankId3.AutoSize = true;
+            this.lblRankId3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId3.Location = new System.Drawing.Point(169, 141);
+            this.lblRankId3.Name = "lblRankId3";
+            this.lblRankId3.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId3.TabIndex = 29;
+            this.lblRankId3.Text = "닉네임 들어갈 자리";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(108, 141);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 20);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "3";
+            // 
+            // lblRankScore2
+            // 
+            this.lblRankScore2.AutoSize = true;
+            this.lblRankScore2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore2.Location = new System.Drawing.Point(346, 97);
+            this.lblRankScore2.Name = "lblRankScore2";
+            this.lblRankScore2.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore2.TabIndex = 27;
+            this.lblRankScore2.Text = "0";
+            // 
+            // lblRankId2
+            // 
+            this.lblRankId2.AutoSize = true;
+            this.lblRankId2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId2.Location = new System.Drawing.Point(169, 97);
+            this.lblRankId2.Name = "lblRankId2";
+            this.lblRankId2.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId2.TabIndex = 26;
+            this.lblRankId2.Text = "닉네임 들어갈 자리";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(108, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 20);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "2";
+            // 
+            // lblRankScore1
+            // 
+            this.lblRankScore1.AutoSize = true;
+            this.lblRankScore1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankScore1.Location = new System.Drawing.Point(346, 53);
+            this.lblRankScore1.Name = "lblRankScore1";
+            this.lblRankScore1.Size = new System.Drawing.Size(18, 20);
+            this.lblRankScore1.TabIndex = 24;
+            this.lblRankScore1.Text = "0";
+            // 
+            // lblRankId1
+            // 
+            this.lblRankId1.AutoSize = true;
+            this.lblRankId1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRankId1.Location = new System.Drawing.Point(169, 53);
+            this.lblRankId1.Name = "lblRankId1";
+            this.lblRankId1.Size = new System.Drawing.Size(113, 20);
+            this.lblRankId1.TabIndex = 23;
+            this.lblRankId1.Text = "닉네임 들어갈 자리";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(108, 53);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 20);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "1";
             // 
             // pnlHowToPlay
             // 
@@ -480,6 +851,8 @@ namespace SockSockGame
             ((System.ComponentModel.ISupportInitialize)(this.ptbSound)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
+            this.pnlRank.ResumeLayout(false);
+            this.pnlRank.PerformLayout();
             this.pnlHowToPlay.ResumeLayout(false);
             this.pnlHowToPlay.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbHeart3)).EndInit();
@@ -522,6 +895,37 @@ namespace SockSockGame
         private System.Windows.Forms.Label lblTimerCount;
         internal System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Panel pnlRank;
+        private System.Windows.Forms.Label lblRankScore1;
+        private System.Windows.Forms.Label lblRankId1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblRankScore10;
+        private System.Windows.Forms.Label lblRankId10;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label lblRankScore9;
+        private System.Windows.Forms.Label lblRankId9;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label lblRankScore8;
+        private System.Windows.Forms.Label lblRankId8;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label lblRankScore7;
+        private System.Windows.Forms.Label lblRankId7;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lblRankScore6;
+        private System.Windows.Forms.Label lblRankId6;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblRankScore5;
+        private System.Windows.Forms.Label lblRankId5;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblRankScore4;
+        private System.Windows.Forms.Label lblRankId4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblRankScore3;
+        private System.Windows.Forms.Label lblRankId3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblRankScore2;
+        private System.Windows.Forms.Label lblRankId2;
+        private System.Windows.Forms.Label label6;
     }
 }
 

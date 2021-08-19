@@ -59,6 +59,8 @@
     <Compile Include="GameC001.cs" />
     <Compile Include="GameC002.cs" />
     <Compile Include="GameC003.cs" />
+    <Compile Include="GameK001.cs" />
+    <Compile Include="GameK002.cs" />
     <Compile Include="GameL001.cs" />
     <Compile Include="GameL002.cs" />
     <Compile Include="GameL003.cs" />
@@ -215,6 +217,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\scissorResult.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Beach01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HanRiver_01.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

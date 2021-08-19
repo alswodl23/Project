@@ -154,7 +154,10 @@ namespace SockSockGame
             {
                 tbInput.Text = "";
                 // 게임종료
-                MessageBox.Show("끝..");
+                form.pnlMain.Controls.Clear();
+                form.pnlMain_Add();
+                form.Visible_Game_Start();
+                form.Next_Game();
             }
         }
     }

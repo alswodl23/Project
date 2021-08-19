@@ -63,9 +63,73 @@ namespace SockSockGame
         int Score = 0;
 
         //랭킹보드
-        RankingBoard[] Rank = new RankingBoard[10];
+        RankingBoard Ranking = new RankingBoard();
 
-       public Form1()
+        private void Rank_board()
+        {
+            Ranking.Add("AAA", 1000);
+            Ranking.Add("DDD", 700);
+            Ranking.Add("EEE", 600);
+            Ranking.Add("HHH", 300);
+            Ranking.Add("BBB", 900);
+            Ranking.Add("CCC", 800);
+            Ranking.Add("GGG", 400);
+            Ranking.Add("III", 200);
+            Ranking.Add("FFF", 500);
+            Ranking.Add("JJJ", 100);
+        }
+
+        private void Ranking_print()
+        {
+            lblRankId1.Text = Ranking.Name_get(1);
+            lblRankScore1.Text = Ranking.Score_get(1).ToString();
+
+            lblRankId2.Text = Ranking.Name_get(2);
+            lblRankScore2.Text = Ranking.Score_get(2).ToString();
+
+            lblRankId3.Text = Ranking.Name_get(3);
+            lblRankScore3.Text = Ranking.Score_get(3).ToString();
+
+            lblRankId4.Text = Ranking.Name_get(4);
+            lblRankScore4.Text = Ranking.Score_get(4).ToString();
+
+            lblRankId5.Text = Ranking.Name_get(5);
+            lblRankScore5.Text = Ranking.Score_get(5).ToString();
+
+            lblRankId6.Text = Ranking.Name_get(6);
+            lblRankScore6.Text = Ranking.Score_get(6).ToString();
+
+            lblRankId7.Text = Ranking.Name_get(7);
+            lblRankScore7.Text = Ranking.Score_get(7).ToString();
+
+            lblRankId8.Text = Ranking.Name_get(8);
+            lblRankScore8.Text = Ranking.Score_get(8).ToString();
+
+            lblRankId9.Text = Ranking.Name_get(9);
+            lblRankScore9.Text = Ranking.Score_get(9).ToString();
+
+            lblRankId10.Text = Ranking.Name_get(10);
+            lblRankScore10.Text = Ranking.Score_get(10).ToString();
+        }
+
+        private void GameEnd()
+        {
+            go = new GameOver();
+            thr = new Thread(new ThreadStart(go.Game_Over));
+
+            if (thrOn == true)
+            {
+                thrOn = false;
+                thrG.Abort();
+            }
+
+            timer.Stop();
+
+            thr.IsBackground = true;
+            thr.Start();
+        }
+
+        public Form1()
         {
             InitializeComponent();
         }
@@ -74,6 +138,7 @@ namespace SockSockGame
         {
             initplay();
             //Sound();
+            Rank_board();
         }
 
         internal void pnlMain_Add()
@@ -133,13 +198,19 @@ namespace SockSockGame
 
         internal void Start_Game()
         {
-            int GameNumb = rand.Next(1, 4);
+            int GameNumb = rand.Next(1, 3);
 
             while (true)
             {
-                if (randomNumbers.Contains(GameNumb))
+                if (randomNumbers.Count == 2)//모든 게임을 실행했을때 게임 종료.
                 {
-                    GameNumb = rand.Next(1, 4);
+                    DialogResult result = MessageBox.Show("모든 게임을 완료하셨습니다! 축하드립니다!", "확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GameEnd();
+                    break;
+                }
+                else if (randomNumbers.Contains(GameNumb))
+                {
+                    GameNumb = rand.Next(1, 3);
                 }
                 else
                 {
@@ -147,7 +218,7 @@ namespace SockSockGame
                 }
             }
             randomNumbers.Add(GameNumb);
-            switch (5)
+            switch (GameNumb)
             {
                 case 1:
                     GameC001 C001 = new GameC001();
@@ -177,10 +248,14 @@ namespace SockSockGame
                     GameS001 S001 = new GameS001();
                     S001.InitGame();
                     break;
-                //case 7:
-                //    GameK001 K001 = new GameK001();
-                //    K001.InitGameK001();
-                //    break;
+                case 8:
+                    GameK001 K001 = new GameK001();
+                    K001.InitGameK001();
+                    break;
+                case 9:
+                    GameK002 K002 = new GameK002();
+                    K002.InitGameK002();
+                    break;
             }
             if (Score_Counrt != 0)
             {
@@ -211,9 +286,11 @@ namespace SockSockGame
             else
             {
                 id = txtID.Text;
-                MessageBox.Show("게임을 시작합니다. 준비 되셨죠?");
+                string startTxt = "게임을 시작합니다. 준비 되셨죠?";
+                string startTxtName = id + "님! " + startTxt;
+                MessageBox.Show(startTxtName);
 
-                counter = 10;
+                counter = 60;
                 timer.Enabled = true;
 
                 Start_Game();
@@ -309,19 +386,7 @@ namespace SockSockGame
             counter--;
             if(counter <= 0)
             {
-                go = new GameOver();
-                thr = new Thread(new ThreadStart(go.Game_Over));
-
-                if (thrOn == true)
-                {
-                    thrOn = false;
-                    thrG.Abort();
-                }
-
-                timer.Stop();
-                
-                thr.IsBackground = true;
-                thr.Start();
+                GameEnd();
             }
 
             lblTimerCount.Text = counter.ToString();
@@ -330,7 +395,18 @@ namespace SockSockGame
 
         private void btnRecord_Click(object sender, EventArgs e)
         {
+            if (pnlRank.Visible == false)
+            {
+                Ranking.ReversScore();
+                Ranking.clear10();
+                Ranking_print();
 
+                pnlRank.Visible = true;
+            }
+            else if(pnlRank.Visible == true)
+            {
+                pnlRank.Visible = false;
+            }
         }
     }
 }
