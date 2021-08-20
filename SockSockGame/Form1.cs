@@ -203,7 +203,7 @@ namespace SockSockGame
 
         internal void Start_Game()
         {
-            int GameNumb = rand.Next(1, 10);
+            int GameNumb = rand.Next(1, 11);
 
             while (true)
             {
@@ -215,7 +215,7 @@ namespace SockSockGame
                 }
                 else if (randomNumbers.Contains(GameNumb))
                 {
-                    GameNumb = rand.Next(1, 10);
+                    GameNumb = rand.Next(1, 11);
                 }
                 else
                 {
@@ -223,7 +223,7 @@ namespace SockSockGame
                 }
             }
             randomNumbers.Add(GameNumb);
-            switch (GameNumb)
+            switch (8)
             {
                 case 1:
                     GameC001 C001 = new GameC001();
@@ -254,10 +254,14 @@ namespace SockSockGame
                     S001.InitGame();
                     break;
                 case 8:
+                    GameS002 S002 = new GameS002();
+                    S002.InitGame();
+                    break;
+                case 9:
                     GameK001 K001 = new GameK001();
                     K001.InitGameK001();
                     break;
-                case 9:
+                case 10:
                     GameK002 K002 = new GameK002();
                     K002.InitGameK002();
                     break;
