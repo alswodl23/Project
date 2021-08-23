@@ -33,7 +33,7 @@ namespace SockSockGame
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txtCopyright = new System.Windows.Forms.TextBox();
             this.lblScore = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbScore = new System.Windows.Forms.GroupBox();
             this.rbtHard = new System.Windows.Forms.RadioButton();
             this.rbtEasy = new System.Windows.Forms.RadioButton();
             this.rbtNormal = new System.Windows.Forms.RadioButton();
@@ -45,8 +45,6 @@ namespace SockSockGame
             this.btnRecord = new System.Windows.Forms.Button();
             this.btnReStart = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.ptbSoundUp = new System.Windows.Forms.PictureBox();
-            this.ptbSoundDown = new System.Windows.Forms.PictureBox();
             this.ptbSound = new System.Windows.Forms.PictureBox();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlRank = new System.Windows.Forms.Panel();
@@ -93,10 +91,8 @@ namespace SockSockGame
             this.btnHowToPlay = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.gbScore.SuspendLayout();
             this.pnlNavi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbSoundUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbSoundDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSound)).BeginInit();
             this.pnlMain.SuspendLayout();
             this.pnlRank.SuspendLayout();
@@ -116,7 +112,7 @@ namespace SockSockGame
             this.txtCopyright.ReadOnly = true;
             this.txtCopyright.Size = new System.Drawing.Size(278, 102);
             this.txtCopyright.TabIndex = 6;
-            this.txtCopyright.Text = "copyright © in\r\nLeeJaeMin\r\nLeeJaeMin\r\nLeeJaeMin\r\nLeeJaeMin";
+            this.txtCopyright.Text = "copyright © in\r\nLee.J.M\r\nJanet Chung\r\nSylvia Park\r\nKJW";
             this.txtCopyright.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblScore
@@ -130,18 +126,18 @@ namespace SockSockGame
             this.lblScore.TabIndex = 4;
             this.lblScore.Text = "0";
             // 
-            // groupBox1
+            // gbScore
             // 
-            this.groupBox1.Controls.Add(this.rbtHard);
-            this.groupBox1.Controls.Add(this.rbtEasy);
-            this.groupBox1.Controls.Add(this.rbtNormal);
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(43, 160);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 65);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "난이도";
+            this.gbScore.Controls.Add(this.rbtHard);
+            this.gbScore.Controls.Add(this.rbtEasy);
+            this.gbScore.Controls.Add(this.rbtNormal);
+            this.gbScore.ForeColor = System.Drawing.Color.White;
+            this.gbScore.Location = new System.Drawing.Point(43, 160);
+            this.gbScore.Name = "gbScore";
+            this.gbScore.Size = new System.Drawing.Size(200, 65);
+            this.gbScore.TabIndex = 15;
+            this.gbScore.TabStop = false;
+            this.gbScore.Text = "난이도";
             // 
             // rbtHard
             // 
@@ -210,10 +206,8 @@ namespace SockSockGame
             this.pnlNavi.Controls.Add(this.btnEnd);
             this.pnlNavi.Controls.Add(this.btnRecord);
             this.pnlNavi.Controls.Add(this.btnReStart);
-            this.pnlNavi.Controls.Add(this.ptbSoundUp);
-            this.pnlNavi.Controls.Add(this.ptbSoundDown);
             this.pnlNavi.Controls.Add(this.ptbSound);
-            this.pnlNavi.Controls.Add(this.groupBox1);
+            this.pnlNavi.Controls.Add(this.gbScore);
             this.pnlNavi.Controls.Add(this.txtCopyright);
             this.pnlNavi.Controls.Add(this.lblScore);
             this.pnlNavi.Controls.Add(this.label2);
@@ -273,35 +267,12 @@ namespace SockSockGame
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // ptbSoundUp
-            // 
-            this.ptbSoundUp.BackColor = System.Drawing.Color.Transparent;
-            this.ptbSoundUp.BackgroundImage = global::SockSockGame.Properties.Resources.plus;
-            this.ptbSoundUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptbSoundUp.Location = new System.Drawing.Point(173, 614);
-            this.ptbSoundUp.Name = "ptbSoundUp";
-            this.ptbSoundUp.Size = new System.Drawing.Size(40, 30);
-            this.ptbSoundUp.TabIndex = 23;
-            this.ptbSoundUp.TabStop = false;
-            // 
-            // ptbSoundDown
-            // 
-            this.ptbSoundDown.BackColor = System.Drawing.Color.Transparent;
-            this.ptbSoundDown.BackgroundImage = global::SockSockGame.Properties.Resources.min;
-            this.ptbSoundDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptbSoundDown.ErrorImage = global::SockSockGame.Properties.Resources.min;
-            this.ptbSoundDown.Location = new System.Drawing.Point(116, 614);
-            this.ptbSoundDown.Name = "ptbSoundDown";
-            this.ptbSoundDown.Size = new System.Drawing.Size(40, 30);
-            this.ptbSoundDown.TabIndex = 22;
-            this.ptbSoundDown.TabStop = false;
-            // 
             // ptbSound
             // 
             this.ptbSound.BackColor = System.Drawing.Color.Transparent;
-            this.ptbSound.BackgroundImage = global::SockSockGame.Properties.Resources.Sound;
+            this.ptbSound.BackgroundImage = global::SockSockGame.Properties.Resources.Sound_Mute;
             this.ptbSound.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptbSound.Location = new System.Drawing.Point(57, 612);
+            this.ptbSound.Location = new System.Drawing.Point(116, 609);
             this.ptbSound.Name = "ptbSound";
             this.ptbSound.Size = new System.Drawing.Size(42, 34);
             this.ptbSound.TabIndex = 21;
@@ -850,12 +821,10 @@ namespace SockSockGame
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbScore.ResumeLayout(false);
+            this.gbScore.PerformLayout();
             this.pnlNavi.ResumeLayout(false);
             this.pnlNavi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbSoundUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbSoundDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSound)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
@@ -880,10 +849,8 @@ namespace SockSockGame
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblTimer;
-        private System.Windows.Forms.PictureBox ptbSoundUp;
-        private System.Windows.Forms.PictureBox ptbSoundDown;
         private System.Windows.Forms.PictureBox ptbSound;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbScore;
         private System.Windows.Forms.RadioButton rbtHard;
         private System.Windows.Forms.RadioButton rbtEasy;
         private System.Windows.Forms.RadioButton rbtNormal;

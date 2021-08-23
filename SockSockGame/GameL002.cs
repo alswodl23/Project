@@ -138,7 +138,6 @@ namespace SockSockGame
             {
                 if (form.skipGame == 0)
                 {
-                    form.counter -= 10;
                     form.pnlMain.Controls.Remove(lblGameName);
                     form.pnlMain.Controls.Remove(lblGameName1);
                     form.pnlMain.Controls.Remove(Image1);

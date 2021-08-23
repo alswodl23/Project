@@ -64,6 +64,7 @@
     <Compile Include="GameL001.cs" />
     <Compile Include="GameL002.cs" />
     <Compile Include="GameL003.cs" />
+    <Compile Include="GameL004.cs" />
     <Compile Include="GameOver.cs" />
     <Compile Include="GameS001.cs" />
     <Compile Include="GameS002.cs" />
@@ -233,6 +234,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GameS002BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lwrong.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lanswer.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game2_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game2_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game2_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game2_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game2_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game2_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game2_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game2_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sound_Mute.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

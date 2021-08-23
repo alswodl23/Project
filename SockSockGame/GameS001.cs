@@ -145,8 +145,7 @@ namespace SockSockGame
                 else
                 {
                     MessageBox.Show("기회를 모두 사용하였습니다.");
-                    // 게임 종료
-                    Application.Exit();
+                    form.Next_Game();
                 }
             }
 

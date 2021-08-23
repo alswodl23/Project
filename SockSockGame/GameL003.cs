@@ -22,7 +22,6 @@ namespace SockSockGame
 
         //게임 관련 체크
         Button btnPrev;
-        Button btnNull = new Button();
         int card = 0;
         int end = 0;
 
@@ -106,8 +105,6 @@ namespace SockSockGame
             this.btnCard8.Location = new System.Drawing.Point(720, 439);
             this.btnCard8.Size = new System.Drawing.Size(179, 260);
             this.btnCard8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-
-            this.btnNull.BackgroundImage = SockSockGame.Properties.Resources.Duduge;
 
             btnCard1.Click += btnCard_Click;
             btnCard2.Click += btnCard_Click;

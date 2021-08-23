@@ -131,6 +131,10 @@ namespace SockSockGame
 
             Ranking.Add(id, Score);
             Ranking.ReversScore();
+
+            Score = 0;
+            Score_Counrt = 0;
+            gbScore.Enabled = true;
         }
 
         public Form1()
@@ -141,8 +145,6 @@ namespace SockSockGame
         private void Form1_Load(object sender, EventArgs e)
         {
             initplay();
-            //Sound();
-            //Rank_board();
             Ranking.RankLoad();
         }
 
@@ -203,11 +205,13 @@ namespace SockSockGame
 
         internal void Start_Game()
         {
-            int GameNumb = rand.Next(1, 11);
+            int GameNumb = rand.Next(1, 12);
+
+            gbScore.Enabled = false;
 
             while (true)
             {
-                if (randomNumbers.Count == 9)//모든 게임을 실행했을때 게임 종료.
+                if (randomNumbers.Count == 11)//모든 게임을 실행했을때 게임 종료.
                 {
                     DialogResult result = MessageBox.Show("모든 게임을 완료하셨습니다! 축하드립니다!", "확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GameEnd();
@@ -215,7 +219,7 @@ namespace SockSockGame
                 }
                 else if (randomNumbers.Contains(GameNumb))
                 {
-                    GameNumb = rand.Next(1, 11);
+                    GameNumb = rand.Next(1, 12);
                 }
                 else
                 {
@@ -223,7 +227,7 @@ namespace SockSockGame
                 }
             }
             randomNumbers.Add(GameNumb);
-            switch (8)
+            switch (GameNumb)
             {
                 case 1:
                     GameC001 C001 = new GameC001();
@@ -250,26 +254,41 @@ namespace SockSockGame
                     L003.initGameL003();
                     break;
                 case 7:
+                    GameL004 L004 = new GameL004();
+                    L004.initGameL004();
+                    break;
+                case 8:
                     GameS001 S001 = new GameS001();
                     S001.InitGame();
                     break;
-                case 8:
+                case 9:
                     GameS002 S002 = new GameS002();
                     S002.InitGame();
                     break;
-                case 9:
+                case 10:
                     GameK001 K001 = new GameK001();
                     K001.InitGameK001();
                     break;
-                case 10:
+                case 11:
                     GameK002 K002 = new GameK002();
                     K002.InitGameK002();
                     break;
             }
             if (Score_Counrt != 0)
             {
-                Score += Score_Counrt * 100;
-
+                if (rbtEasy.Checked == true)
+                {
+                    Score += Score_Counrt * 100;
+                }
+                else if (rbtNormal.Checked == true)
+                {
+                    Score += Score_Counrt * 150;
+                }
+                else if (rbtHard.Checked == true)
+                {
+                    Score += Score_Counrt * 200;
+                }
+                
                 lblScore.Text = Score.ToString();
             }
             Score_Counrt++;
@@ -301,7 +320,19 @@ namespace SockSockGame
                 string startTxtName = id + "님! " + startTxt;
                 MessageBox.Show(startTxtName);
 
-                counter = 60;
+                if (rbtEasy.Checked == true)
+                {
+                    counter = 60;
+                }
+                else if(rbtNormal.Checked == true)
+                {
+                    counter = 45;
+                }
+                else if (rbtHard.Checked == true)
+                {
+                    counter = 30;
+                }
+
                 timer.Enabled = true;
 
                 Start_Game();
@@ -328,10 +359,12 @@ namespace SockSockGame
         {
             if (soundCheck)
             {
+                this.ptbSound.BackgroundImage = global::SockSockGame.Properties.Resources.Sound_Mute;
                 Sound_stop();
             }
             else
             {
+                this.ptbSound.BackgroundImage = global::SockSockGame.Properties.Resources.Sound;
                 Sound();
             }
         }
@@ -368,7 +401,6 @@ namespace SockSockGame
                     Score_Counrt = 0;
                 }
 
-                
                 pnlMain.Controls.Clear();
                 pnlMain_Add();
                 Visible_Game_Start();
