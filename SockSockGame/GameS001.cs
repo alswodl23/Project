@@ -27,9 +27,6 @@ namespace SockSockGame
         // 정답 맞춘 횟수
         int correctCount = 0;
 
-        // 오타 기회 횟수
-        int countWrong = 3;
-
         // 단여 배열
         string[] word = { "거울", "얼굴", "조심성", "음영", "주름", "손가락", "대열", "모습", "사랑", "공격", "웃음", "침대", "긴장",
                 "시간", "휴식", "열정", "창문", "배회", "안정", "비", "방" };
@@ -131,33 +128,24 @@ namespace SockSockGame
             }
             else
             {
-                countWrong--;
-                if (countWrong == 2)
-                {
-                    MessageBox.Show("틀렸습니다. 기회가 2번 남았습니다.");
-                    initTextbox();
-                }
-                else if (countWrong == 1)
-                {
-                    MessageBox.Show("틀렸습니다. 기회가 1번 남았습니다.");
-                    initTextbox();
-                }
-                else
-                {
-                    MessageBox.Show("기회를 모두 사용하였습니다.");
-                    form.Next_Game();
-                }
+                MessageBox.Show("실패!");
+                gameover();
             }
 
-            if(correctCount == 3)
+            if (correctCount == 3)
             {
                 tbInput.Text = "";
-                // 게임종료
-                form.pnlMain.Controls.Clear();
-                form.pnlMain_Add();
-                form.Visible_Game_Start();
-                form.Next_Game();
+                MessageBox.Show("성공!");
+                gameover();
             }
+        }
+        // 게임 종료 및 다음게임으로 넘어가기 이벤트
+        internal void gameover()
+        {
+            form.pnlMain.Controls.Clear();
+            form.pnlMain_Add();
+            form.Visible_Game_Start();
+            form.Next_Game();
         }
     }
 }
